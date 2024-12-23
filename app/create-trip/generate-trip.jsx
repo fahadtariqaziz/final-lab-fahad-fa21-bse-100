@@ -37,10 +37,10 @@ export default function GenerateTrip() {
             .replace('{totalDays}',tripData.totalNoOfDays)
             .replace('{totalNights}',tripData.totalNoOfDays-1)
 
-        console.log(FINAL_PROMPT);  
+        // console.log(FINAL_PROMPT);  
         
          const result = await chatSession.sendMessage(FINAL_PROMPT);
-         console.log(result.response.text());
+        //  console.log(result.response.text());
         const tripResp = JSON.parse(result.response.text());
 
         setLoading(false)

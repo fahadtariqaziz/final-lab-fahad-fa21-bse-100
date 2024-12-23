@@ -18,7 +18,7 @@ export default function SearchPlace() {
     })
 
     useEffect( () => {
-        console.log(tripData);
+        // console.log(tripData);
     },[tripData])
 
     const handleNext = () => {
@@ -69,7 +69,7 @@ export default function SearchPlace() {
         // router.push('/create-trip/select-traveler')
       // }}
         onPress={(data, details = null) => {
-          console.log(data, details);
+          // console.log(data, details);
         }}
         query={{
           key: process.env.EXPO_PUBLIC_GOOGLE_MAP_KEY,

@@ -19,7 +19,7 @@ export default function UserTrips({userTrips}) {
     // },[])
 
     useEffect(() => {
-        console.log('Trip Data:', userTrips[0].tripData);
+        // console.log('Trip Data:', userTrips[0].tripData);
     }, []);
 
   return (

@@ -38,7 +38,7 @@ export default function SignIn() {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log( errorCode)
+                // console.log( errorCode)
                 if(errorCode == 'auth/invalid-credential')
                 {
                     ToastAndroid.show("Invalid credential",ToastAndroid.BOTTOM);

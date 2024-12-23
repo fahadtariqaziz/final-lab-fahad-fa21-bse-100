@@ -18,12 +18,12 @@ export default function SelectTraveler() {
 
     useEffect( ()=> {
         setTripData({...tripData, traveler: selectTraveller})
-        console.log(selectTraveller);
+        // console.log(selectTraveller);
     },[selectTraveller])  
 
 
     useEffect( ()=> {
-        console.log(tripData)
+        // console.log(tripData)
     },[tripData])
 
     useEffect( ()=> {

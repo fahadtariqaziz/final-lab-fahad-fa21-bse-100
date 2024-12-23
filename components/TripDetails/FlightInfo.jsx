@@ -5,8 +5,8 @@ import { Colors } from '../../constants/Colors';
 export default function FlightInfo({flightData}) {
 
     useEffect(() => {
-        console.log(flightData?.[0]);
-        console.log(flightData?.[0]?.price)
+        // console.log(flightData?.[0]);
+        // console.log(flightData?.[0]?.price)
     },[flightData])
   return (
     <View style={{marginTop:20, borderWidth:1, borderColor:Colors.LIGHT_GRAY, padding:10, borderRadius:15}}>

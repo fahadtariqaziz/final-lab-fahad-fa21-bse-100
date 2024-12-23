@@ -33,13 +33,13 @@ export default function TripDetails() {
 
         })
 
-        console.log(trip);
+        // console.log(trip);
 
         const parsedData = formatData(trip);
         setTripDetails(parsedData);
         setTripDetailsForDays(parsedData);
 
-        console.log(parsedData)
+        // console.log(parsedData)
     },[trip])
 
 

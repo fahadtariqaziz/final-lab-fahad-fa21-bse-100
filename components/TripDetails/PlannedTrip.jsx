@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 
 export default function PlannedTrip({ details }) {
   useEffect(() => {
-    console.log('Hellooooo');
-    console.log('Details Prop:', details);
+    // console.log('Hellooooo');
+    // console.log('Details Prop:', details);
   }, [details]);
 
   // Check if details is undefined or null
