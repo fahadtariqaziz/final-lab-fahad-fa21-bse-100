@@ -3,15 +3,12 @@ import { View, Text, TextInput, StyleSheet, ActivityIndicator, ScrollView, Touch
 import { Colors } from '../../constants/Colors';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../configs/FirebaseConfig';
-import { useRouter } from 'expo-router';
 
 export default function ProductPage() {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
   const [loading, setLoading] = useState(false);
-
-  const router = useRouter();
 
   useEffect(() => {
     fetchProducts();
@@ -78,8 +75,8 @@ export default function ProductPage() {
         <View>
           {products.map((product) => (
             <TouchableOpacity key={product.id} style={styles.productCard}>
-              <Image source={{ uri: product.imageURL }} style={styles.productImage}  />
-              <View onPress={()=> router.push('/create-trip/searchPlace')}>
+              <Image source={{ uri: product.imageURL }} style={styles.productImage} />
+              <View>
                 <Text style={styles.productName}>{product.name}</Text>
                 <Text style={styles.productCategory}>{product.category}</Text>
                 <Text style={styles.productPrice}>${product.price.toFixed(2)}</Text>

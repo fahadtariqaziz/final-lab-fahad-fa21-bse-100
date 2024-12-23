@@ -4,7 +4,8 @@ import {useNavigation, useRouter} from 'expo-router';
 import {Colors} from './../../../constants/Colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import {auth} from './../../../configs/FirebaseConfig';
+import { doc, setDoc } from 'firebase/firestore';
+import { auth, db } from './../../../configs/FirebaseConfig';
 export default function SignUp() {
 
     const navigation = useNavigation();
@@ -19,29 +20,42 @@ export default function SignUp() {
     },[])
 
 
-    const OnCreateAccount = () => {
-
-        if(!email && !password && !fullName)
-        {
-            ToastAndroid.show('Please Enter all details', ToastAndroid.BOTTOM)
-            return;
+    const OnCreateAccount = async () => {
+        if (!email || !password || !fullName) {
+          ToastAndroid.show('Please enter all details', ToastAndroid.BOTTOM);
+          return;
         }
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed up 
-                const user = userCredential.user;
-                console.log(user);
-                
-                router.replace('/mytrip');
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // console.log(errorMessage, errorCode);
-                // ..
-            });
-    }
+      
+        try {
+          // Create user in Firebase Authentication
+          const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+          const user = userCredential.user;
+      
+          // Store additional user details in Firestore
+          const userDoc = doc(db, 'users', user.uid); // Use `uid` as the document ID
+          await setDoc(userDoc, {
+            fullName: fullName,
+            email: email,
+            createdAt: new Date().toISOString(),
+          });
+      
+          ToastAndroid.show('Account created successfully', ToastAndroid.LONG);
+          router.replace('/mytrip');
+        } catch (error) {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+      
+          // Handle specific errors
+          if (errorCode === 'auth/email-already-in-use') {
+            ToastAndroid.show('Email is already in use', ToastAndroid.BOTTOM);
+          } else {
+            ToastAndroid.show('Failed to create account', ToastAndroid.BOTTOM);
+          }
+      
+          console.error('Error during account creation:', errorMessage);
+        }
+      };
+      
 
   return (
     <View style={{padding:25, paddingTop:50, backgroundColor:Colors.WHITE, height:'100%'}}>

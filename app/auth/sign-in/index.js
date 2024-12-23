@@ -4,7 +4,8 @@ import {useNavigation, useRouter} from 'expo-router';
 import {Colors} from './../../../constants/Colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import {auth} from './../../../configs/FirebaseConfig';
+import { doc, setDoc } from 'firebase/firestore';
+import { auth, db } from './../../../configs/FirebaseConfig';
 
 export default function SignIn() {
 

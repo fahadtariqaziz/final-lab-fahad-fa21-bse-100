@@ -8,11 +8,11 @@ export default function Login() {
     const router = useRouter();
   return (
     <View>
-      <Image source={require('./../assets/images/login2.jpeg')} style={{width:'100%', height:520}} />
+      <Image source={require('./../assets/images/login.jpg')} style={{width:'100%', height:520}} />
     
         <View style={styles.container}>
-            <Text style={{fontSize:30, fontFamily:'outfit-bold', textAlign:'center', marginTop:10}}>AI Travel Guide</Text>
-            <Text style={{fontSize:17, textAlign:'center', fontFamily:'outfit', color:Colors.GRAY ,marginTop:20}}>Discover your new adventure effortlessly. Personalized trips at your fingerstep. Travel smarter with AI-driven insights</Text>
+            <Text style={{fontSize:30, fontFamily:'outfit-bold', textAlign:'center', marginTop:10}}>One Stop Shop</Text>
+            <Text style={{fontSize:17, textAlign:'center', fontFamily:'outfit', color:Colors.GRAY ,marginTop:20}}>All you can buy in just few steps</Text>
       
             {/* <View style={styles.button} >
                 <Text style={{color:Colors.WHITE, textAlign:'center', fontFamily:'outfit', fontSize:17}}> Get Started </Text>
